@@ -14,9 +14,9 @@ class Abc
 		}
 		Arrays.sort(ar);
 		int count=0;
-		for(int i=0;i<n;i++)
+		for(int i=0;i<q;i++)
 		{
-			if(n>=ar[i])
+			if(n>0&&n>=ar[i])
 			{
 				count++;
 				n=n-ar[i];

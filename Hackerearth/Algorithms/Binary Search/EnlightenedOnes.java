@@ -57,65 +57,54 @@ class Abc
 	        } 
 	        return str; 
 	    } 
-	} 
-	static long count;
-	static long mod=1000000007;
+	}
 	public static void main(String args[])
 	{
 		FastReader in=new FastReader();
-		int t=in.nextInt();
-		for(int g=0;g<t;g++)
+		int n,k;
+		n=in.nextInt();
+		k=in.nextInt();
+		int ar[]=new int[n];
+		for(int i=0;i<n;i++)
 		{
-			count=0;
-			int n=in.nextInt();
-			int ar[]=new int[n];
-			for(int i=0;i<n;i++)
-			{
-				ar[i]=in.nextInt();
-			}
-			int visited[]=new int[n];
-			visited[0]=1;
-			func(ar,0,visited);
-			System.out.println(count);
+			ar[i]=in.nextInt();
 		}
+		//Arrays.sort(ar);
+		int start=1,end=10000001,mid;
+		while(start<=end)
+		{
+			mid=(start+end)/2;
+			if(check(ar,n,mid)>k)
+			{
+				start=mid+1;
+			}
+			else
+			{
+				end=mid-1;
+			}
+		}
+		System.out.println(start);
 	}
-	public static void func(int ar[],int index,int visited[])
+	public static int check(int ar[],int n,int val)
 	{
-		count++;
-		count%=mod;
-		if(index-1>=0&&visited[index-1]==0)
+		//System.out.println("Val= "+val);
+		int count=0;
+		for(int i=0;i<n;i++)
 		{
-			visited[index-1]=1;
-			func(ar,index-1,visited);
-			System.out.println(Arrays.toString(visited)+" Count= "+count);
-			visited[index-1]=0;
-		}
-		if(index+1<ar.length&&visited[index+1]==0)
-		{
-			visited[index+1]=1;
-			func(ar,index+1,visited);
-			System.out.println(Arrays.toString(visited)+" Count= "+count);
-			visited[index+1]=0;
-		}
-		if(ar[index]==2)
-		{
-			if(index-2>=0&&visited[index-2]==0)
+			int up=2*val+ar[i];
+			//System.out.println("up= "+up);
+			count++;
+			int j;
+			for(j=i;j<n;j++)
 			{
-
-				visited[index-2]=1;
-				func(ar,index-2,visited);
-				System.out.println(Arrays.toString(visited)+" Count= "+count);
-				visited[index-2]=0;
+				if(ar[j]>up)
+				{
+					break;
+				}
 			}
-			if(index+2<ar.length&&visited[index+2]==0)
-			{
-
-				visited[index+2]=1;
-				func(ar,index+2,visited);
-				System.out.println(Arrays.toString(visited)+" Count= "+count);
-				visited[index+2]=0;
-			}
+			i=j-1;
 		}
-
+		//System.out.println("Monks needed= "+(count));
+		return count;
 	}
 }
