@@ -1,0 +1,1 @@
+1. selection sort, insertion sort and bubble sort 
