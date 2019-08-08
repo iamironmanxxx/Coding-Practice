@@ -1,0 +1,2 @@
+1. BST Hard 2...incomplete question
+2. Graphs Easy 4....Java solution is not solved using graphs
