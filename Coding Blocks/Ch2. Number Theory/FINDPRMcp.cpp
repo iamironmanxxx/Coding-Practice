@@ -12,7 +12,7 @@ void pre(){
     cum[2] = 1;
     for(int i = 3 ; i<=10000000 ; i++){
         if(primes[i] == 0 && i%2 != 0)
-            cum[i] += cum[i-1] + 1;
+            cum[i] = cum[i-1] + 1;
         else
             cum[i] = cum[i-1];
     }
