@@ -1,0 +1,1 @@
+1. Catlan - nCr(2n,n)/(n+1) or summation(Ci.C(n-i)) 
